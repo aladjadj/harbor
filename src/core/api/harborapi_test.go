@@ -35,6 +35,7 @@ import (
 	"github.com/goharbor/harbor/src/core/config"
 	"github.com/goharbor/harbor/src/core/filter"
 	"github.com/goharbor/harbor/tests/apitests/apilib"
+
 	//	"strconv"
 	//	"strings"
 
@@ -94,7 +95,7 @@ func init() {
 		LdapGroupSearchScope:   2,
 		LdapGroupNameAttribute: "cn",
 	}
-	ldapTestConfig, err := ldapUtils.CreateWithAllConfig(ldapConfig, ldapGroupConfig)
+	_, err := ldapUtils.CreateWithAllConfig(ldapConfig, ldapGroupConfig)
 	if err != nil {
 		log.Fatalf("failed to initialize configurations: %v", err)
 	}
@@ -155,10 +156,10 @@ func init() {
 	beego.Router("/api/systeminfo", &SystemInfoAPI{}, "get:GetGeneralInfo")
 	beego.Router("/api/systeminfo/volumes", &SystemInfoAPI{}, "get:GetVolumeInfo")
 	beego.Router("/api/systeminfo/getcert", &SystemInfoAPI{}, "get:GetCert")
-	beego.Router("/api/ldap/ping", &LdapAPI{ldapConfig: ldapTestConfig, useTestConfig: true}, "post:Ping")
-	beego.Router("/api/ldap/users/search", &LdapAPI{ldapConfig: ldapTestConfig, useTestConfig: true}, "get:Search")
-	beego.Router("/api/ldap/groups/search", &LdapAPI{ldapConfig: ldapTestConfig, useTestConfig: true}, "get:SearchGroup")
-	beego.Router("/api/ldap/users/import", &LdapAPI{ldapConfig: ldapTestConfig, useTestConfig: true}, "post:ImportUser")
+	beego.Router("/api/ldap/ping", &LdapAPI{}, "post:Ping")
+	beego.Router("/api/ldap/users/search", &LdapAPI{}, "get:Search")
+	beego.Router("/api/ldap/groups/search", &LdapAPI{}, "get:SearchGroup")
+	beego.Router("/api/ldap/users/import", &LdapAPI{}, "post:ImportUser")
 	beego.Router("/api/configurations", &ConfigAPI{})
 	beego.Router("/api/configurations/reset", &ConfigAPI{}, "post:Reset")
 	beego.Router("/api/configs", &ConfigAPI{}, "get:GetInternalConfig")
