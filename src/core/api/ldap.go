@@ -52,7 +52,7 @@ func (l *LdapAPI) Prepare() {
 		return
 	}
 
-	if l.useTestConfig {
+	if l.useTestConfig == true {
 		log.Infof("Load system ldap config")
 		ldapCfg, err := ldapUtils.LoadSystemLdapConfig()
 		if err != nil {
