@@ -183,6 +183,15 @@ func GetSystemCfg() (map[string]interface{}, error) {
 	return mg.Load()
 }
 
+// CiMode ...
+func CiMode() (bool, error) {
+	cfg, err := mg.Get()
+	if err != nil {
+		return false, err
+	}
+	return utils.SafeCastBool(cfg[common.CIMode]), nil
+}
+
 // AuthMode ...
 func AuthMode() (string, error) {
 	cfg, err := mg.Get()

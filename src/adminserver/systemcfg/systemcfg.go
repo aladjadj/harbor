@@ -57,6 +57,10 @@ var (
 
 	// all configurations need read from environment variables
 	allEnvs = map[string]interface{}{
+		common.CIMode: &parser{
+			env:   "CI_MODE",
+			parse: parseStringToBool,
+		},
 		common.ExtEndpoint: "EXT_ENDPOINT",
 		common.AUTHMode:    "AUTH_MODE",
 		common.SelfRegistration: &parser{
@@ -176,6 +180,10 @@ var (
 	// configurations need read from environment variables
 	// every time the system startup
 	repeatLoadEnvs = map[string]interface{}{
+		common.CIMode: &parser{
+			env:   "CI_MODE",
+			parse: parseStringToBool,
+		},
 		common.ExtEndpoint:    "EXT_ENDPOINT",
 		common.PostGreSQLHOST: "POSTGRESQL_HOST",
 		common.PostGreSQLPort: &parser{

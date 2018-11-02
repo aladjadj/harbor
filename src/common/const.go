@@ -38,6 +38,7 @@ const (
 	ResourceTypeRepository = "r"
 	ResourceTypeImage      = "i"
 
+	CIMode                            = "ci_mode"
 	ExtEndpoint                       = "ext_endpoint"
 	AUTHMode                          = "auth_mode"
 	DatabaseType                      = "database_type"
@@ -186,6 +187,7 @@ var (
 	}
 
 	HarborBoolKeysMap = map[string]bool{
+		CIMode:           true,
 		EmailSSL:         false,
 		EmailInsecure:    false,
 		SelfRegistration: true,
