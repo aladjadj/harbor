@@ -185,11 +185,12 @@ func GetSystemCfg() (map[string]interface{}, error) {
 
 // CiMode ...
 func CiMode() (bool, error) {
-	cfg, err := mg.Get()
-	if err != nil {
-		return true, err
-	}
-	return utils.SafeCastBool(cfg[common.CIMode]), nil
+	// cfg, err := mg.Get()
+	// if err != nil {
+	// 	return true, err
+	// }
+	// return utils.SafeCastBool(cfg[common.CIMode]), nil
+	return true, nil
 }
 
 // AuthMode ...
