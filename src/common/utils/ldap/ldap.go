@@ -58,7 +58,7 @@ func LoadSystemLdapConfig() (*Session, error) {
 		return nil, err
 	}
 
-	if authMode != "ldap_auth" && !ciMode {
+	if authMode != "ldap_auth" && ciMode == false {
 		return nil, fmt.Errorf("system auth_mode isn't ldap_auth, please check configuration")
 	}
 
