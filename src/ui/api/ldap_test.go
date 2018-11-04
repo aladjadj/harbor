@@ -2,14 +2,14 @@ package api
 
 import (
 	"net/http"
-	"os"
 	"testing"
 
 	"github.com/vmware/harbor/src/common/models"
+	"github.com/vmware/harbor/src/ui/config"
 )
 
 func skipCI(t *testing.T) {
-	if os.GetEnv("AUTH_MODE") != "ldap_auth" {
+	if authMode, _ := config.AuthMode(); authMode != "ldap_auth" {
 		t.Skip("Skipping testing if auth_mode is not ldap_auth")
 	}
 }
