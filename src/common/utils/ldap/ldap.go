@@ -46,21 +46,21 @@ type Session struct {
 //LoadSystemLdapConfig - load LDAP configure from adminserver
 func LoadSystemLdapConfig() (*Session, error) {
 
-	authMode, err := config.AuthMode()
-	if err != nil {
-		log.Errorf("can't load auth mode from system, error: %v", err)
-		return nil, err
-	}
+	// authMode, err := config.AuthMode()
+	// if err != nil {
+	// 	log.Errorf("can't load auth mode from system, error: %v", err)
+	// 	return nil, err
+	// }
 
-	ciMode, err := config.CiMode()
-	if err != nil {
-		log.Errorf("can't load ci mode from system, error: %v", err)
-		return nil, err
-	}
+	// ciMode, err := config.CiMode()
+	// if err != nil {
+	// 	log.Errorf("can't load ci mode from system, error: %v", err)
+	// 	return nil, err
+	// }
 
-	if authMode != "ldap_auth" && ciMode == false {
-		return nil, fmt.Errorf("system auth_mode isn't ldap_auth, please check configuration")
-	}
+	// if authMode != "ldap_auth" && ciMode == false {
+	// 	return nil, fmt.Errorf("system auth_mode isn't ldap_auth, please check configuration")
+	// }
 
 	ldapConf, err := config.LDAPConf()
 
