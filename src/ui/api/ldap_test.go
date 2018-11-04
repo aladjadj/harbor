@@ -2,12 +2,20 @@ package api
 
 import (
 	"net/http"
+	"os"
 	"testing"
 
 	"github.com/vmware/harbor/src/common/models"
 )
 
+func skipCI(t *testing.T) {
+	if os.GetEnv("AUTH_MODE") != "ldap_auth" {
+		t.Skip("Skipping testing if auth_mode is not ldap_auth")
+	}
+}
+
 func TestLDAPPing(t *testing.T) {
+	skipCI(t)
 	cases := []*codeCheckingCase{
 		&codeCheckingCase{
 			request: &testingRequest{
@@ -46,6 +54,7 @@ func TestLDAPPing(t *testing.T) {
 }
 
 func TestLDAPUserSearch(t *testing.T) {
+	skipCI(t)
 	cases := []*codeCheckingCase{
 		&codeCheckingCase{
 			request: &testingRequest{
@@ -67,6 +76,7 @@ func TestLDAPUserSearch(t *testing.T) {
 }
 
 func TestLDAPGroupSearch(t *testing.T) {
+	skipCI(t)
 	cases := []*codeCheckingCase{
 		&codeCheckingCase{
 			request: &testingRequest{
@@ -88,6 +98,7 @@ func TestLDAPGroupSearch(t *testing.T) {
 }
 
 func TestLDAPGroupSearchWithDN(t *testing.T) {
+	skipCI(t)
 	cases := []*codeCheckingCase{
 		&codeCheckingCase{
 			request: &testingRequest{
@@ -109,6 +120,7 @@ func TestLDAPGroupSearchWithDN(t *testing.T) {
 }
 
 func TestLDAPImportUser(t *testing.T) {
+	skipCI(t)
 	cases := []*codeCheckingCase{
 		&codeCheckingCase{
 			request: &testingRequest{
